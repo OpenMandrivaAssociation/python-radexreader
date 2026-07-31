@@ -18,8 +18,8 @@ Pour éviter un Access denied (insufficient permissions), n'oubliez pas
 de débrancher l'appareil après l'installation.}
 
 Name:          python-radexreader
-Version:       1.2.5
-Release:       2
+Version:       1.3.0
+Release:       1
 Summary:       %{common_summary_en}
 Summary(fr):   %{common_summary_fr}
 License:       GPL-2.0-or-later
