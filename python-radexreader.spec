@@ -19,7 +19,7 @@ de débrancher l'appareil après l'installation.}
 
 Name:          python-radexreader
 Version:       1.3.0
-Release:       1
+Release:       2
 Summary:       %{common_summary_en}
 Summary(fr):   %{common_summary_fr}
 License:       GPL-2.0-or-later
@@ -37,11 +37,10 @@ BuildRequires: aspell-fr
 Summary:       %{common_summary_en}
 Summary(fr):   %{common_summary_fr}
 
-BuildRequires: python3-devel
-BuildRequires: python3-setuptools
-Requires:      python3
-Requires:      python3dist(pyusb)
-Requires:      python3dist(pyserial)
+BuildRequires: pkgconfig(python3)
+BuildRequires: python%{pyver}dist(setuptools)
+Requires:      python%{pyver}dist(pyusb)
+Requires:      python%{pyver}dist(pyserial)
 
 %description -n python3-radexreader %{common_description_en}
 %description -n python3-radexreader -l fr %{common_description_fr}
@@ -54,10 +53,10 @@ sed -i 's/\#\!\/usr\/bin\/python3/\#/g' src/radexreader/__init__.py
 
 %build
 cd src
-%py3_build
+%py_build
 %install
 cd src
-%py3_install
+%py_install
 install -Dpm 755 radexreader-cli.py %{buildroot}%{_bindir}/radexreader
 install -Dpm 644 ../data/radexreader.1 %{buildroot}%{_mandir}/man1/radexreader.1
 install -Dpm 644 ../data/radexreader.fr.1 %{buildroot}%{_mandir}/fr/man1/radexreader.1
@@ -66,8 +65,8 @@ install -Dpm 644 ../scripts/debian/python3-radexreader.udev %{buildroot}/lib/ude
 %files -n python3-radexreader
 %license LICENSE
 %doc README.md
-%ghost %{python3_sitelib}/radexreader*egg-info/
-%{python3_sitelib}/radexreader/
+%ghost %{py_puresitedir}/radexreader*egg-info/
+%{py_puresitedir}/radexreader/
 %{_bindir}/radexreader
 %{_mandir}/man1/radexreader.1*
 %{_mandir}/*/man1/radexreader.1*
